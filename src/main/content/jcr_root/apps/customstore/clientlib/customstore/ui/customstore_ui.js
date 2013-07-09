@@ -51,6 +51,7 @@ if (CQ_Analytics.CustomStoreMgr ) {
     }
 
 <<<<<<< .mine
+<<<<<<< .mine
     //$CQ(".customstore-input").change(function(){
     //    var value = false;
     //    if ($CQ(this).attr("checked")) {
@@ -90,12 +91,37 @@ if (CQ_Analytics.CustomStoreMgr ) {
 
 
 >>>>>>> .theirs
+=======
+    CQ_Analytics.CustomStoreMgr.setTraitValue = function(trait, newValue) {
+
+        var traits = CQ_Analytics.CustomStoreMgr.data["traits"];
+        if (traits) {
+            for (var i in traits) {
+                if (typeof traits[i] === 'object') {
+                    if (traits[i]["usertrait"] === trait) traits[i]["value"] = newValue;
+                }
+            }
+>>>>>>> .theirs
         }
-        var key = $CQ(this).attr("name");
-        $CQ("label[for='customstore-input-" + key + "']").toggleClass('checked');
-        var newValue = (value === true)?"true":"false";
-        // CQ_Analytics.ProfileDataMgr.setProperty(key,newValue);
-        // CQ_Analytics.ProfileDataMgr.fireEvent("update");
-    });         
+    };
+
+    $CQ.ready(function(){
+
+		$CQ(".customstore-input").change(function(){
+        	var value = false;
+        	if ($CQ(this).attr("checked")) {
+            	value = true;
+        	}
+        	var key = $CQ(this).attr("name");
+        	$CQ("label[for='customstore-input-" + key + "']").toggleClass('checked');
+        	var newValue = (value === true)?"true":"false";
+			CQ_Analytics.CustomStoreMgr.setTraitValue(key,newValue);
+        	CQ_Analytics.ProfileDataMgr.fireEvent("update");
+    	});         
+
+
+    });
+
+
 
 }
