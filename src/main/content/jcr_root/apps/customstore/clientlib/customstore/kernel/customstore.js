@@ -10,12 +10,12 @@ if (!CQ_Analytics.CustomStoreMgr ) {
     // Function to load the data for the current user
     CQ_Analytics.CustomStoreMgr.loadData = function() {
 
+        console.info("Loading CustomStoreMgr data");
+
         var authorizableId = CQ_Analytics.ProfileDataMgr.getProperty("authorizableId");
         var url = "/apps/customstore/components/loader.json";
 
         if ( (authorizableId !== CQ_Analytics.CustomStoreMgr.currentId) & CQ_Analytics.CustomStoreMgr.initialized ) {
-
-			console.info("Loading CustomStoreMgr data");
 
             url = CQ_Analytics.Utils.addParameter(url, "authorizableId", authorizableId);
 

@@ -9,10 +9,10 @@ if (CQ_Analytics.CustomStoreMgr ) {
         "<div class='toggle'><div class='green'></div><div class='red'></div></div>" +
         "%label%</label>";
 
-    CQ_Analytics.CustomStoreMgr.templateRenderer = function(key, label, checked) {
+    CQ_Analytics.CustomStoreMgr.templateRenderer = function(key, label, value) {
 
          var checkedString = ""; var checkedClass = "";
-         if (checked) {
+         if (value==="true") {
              checkedString = "checked='checked'";
              checkedClass  = "checked";
          }
@@ -38,18 +38,32 @@ if (CQ_Analytics.CustomStoreMgr ) {
 
 		var data = this.getJSON();
 
-        var traits = data["traits"];
-        if (traits) {
-            for (var i in traits) {
-                var value = false;
-                if (typeof traits[i] === 'object') {
-                    if ( traits[i]["value"] === "true") value = true;
-                    $CQ("#" + divId).append(templateRenderer(traits[i]["usertrait"],traits[i]["label"],value));
+        if (data) {
+            for (var i in data) {
+                if (typeof data[i] === 'object') {
+                    $CQ("#" + divId).append(templateRenderer(data[i].key,data[i].label,data[i].value));
                 }
             }
         }
+
+		$CQ(".customstore-input").change(function(){
+            var value = false;
+        	if ($CQ(this).attr("checked")) {
+            	value = true;
+        	}
+        	var key = $CQ(this).attr("name");
+        	$CQ("label[for='customstore-input-" + key + "']").toggleClass('checked');
+        	var newValue = (value === true)?"true":"false";
+			CQ_Analytics.CustomStoreMgr.setTraitValue(key,newValue);
+        	CQ_Analytics.ProfileDataMgr.fireEvent("update");
+    	});         
+
     }
 
+<<<<<<< .mine
+<<<<<<< .mine
+<<<<<<< .mine
+<<<<<<< .mine
 <<<<<<< .mine
 <<<<<<< .mine
     //$CQ(".customstore-input").change(function(){
@@ -102,7 +116,52 @@ if (CQ_Analytics.CustomStoreMgr ) {
                 }
             }
 >>>>>>> .theirs
+=======
+    CQ_Analytics.CustomStoreMgr.setTraitValue = function(trait, newValue) {
+
+        var traits = CQ_Analytics.CustomStoreMgr.data["traits"];
+        if (traits) {
+            for (var i in traits) {
+                if (typeof traits[i] === 'object') {
+                    if (traits[i]["usertrait"] === trait) traits[i]["value"] = newValue;
+                }
+            }
+>>>>>>> .theirs
+=======
+    CQ_Analytics.CustomStoreMgr.setTraitValue = function(trait, newValue) {
+
+        var traits = CQ_Analytics.CustomStoreMgr.data["traits"];
+        if (traits) {
+            for (var i in traits) {
+                if (typeof traits[i] === 'object') {
+                    if (traits[i]["usertrait"] === trait) traits[i]["value"] = newValue;
+                }
+            }
+>>>>>>> .theirs
+=======
+    CQ_Analytics.CustomStoreMgr.setTraitValue = function(trait, newValue) {
+
+        var traits = CQ_Analytics.CustomStoreMgr.data["traits"];
+        if (traits) {
+            for (var i in traits) {
+                if (typeof traits[i] === 'object') {
+                    if (traits[i]["usertrait"] === trait) traits[i]["value"] = newValue;
+                }
+            }
+>>>>>>> .theirs
+=======
+    CQ_Analytics.CustomStoreMgr.setTraitValue = function(trait, newValue) {
+
+        var data = CQ_Analytics.CustomStoreMgr.data;
+        if (data) {
+            for (var i in data) {
+                if (typeof data[i] === 'object') {
+                    if (data[i].key === trait) data[i].value = newValue;
+                }
+            }
+>>>>>>> .theirs
         }
+<<<<<<< .mine
     };
 
     $CQ.ready(function(){
@@ -123,5 +182,11 @@ if (CQ_Analytics.CustomStoreMgr ) {
     });
 
 
+=======
+    };
+
+    
+	CQ_Analytics.ClickstreamcloudMgr.register(CQ_Analytics.CustomStoreMgr);
+>>>>>>> .theirs
 
 }

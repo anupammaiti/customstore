@@ -2,6 +2,22 @@
   customcontextstore component.
 <<<<<<< .mine
 <<<<<<< .mine
+<<<<<<< .mine
+<<<<<<< .mine
+<<<<<<< .mine
+<<<<<<< .mine
+=======
+    
+>>>>>>> .theirs
+=======
+    
+>>>>>>> .theirs
+=======
+    
+>>>>>>> .theirs
+=======
+    
+>>>>>>> .theirs
 =======
     
 >>>>>>> .theirs

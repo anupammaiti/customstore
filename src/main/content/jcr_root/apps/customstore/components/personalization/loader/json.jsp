@@ -33,23 +33,20 @@
 
             // here we simulate the result from a back-end system
 
-			w.key("traits");
-
-        	w.array();
-
+            w.key("AUTOMATICPAYMENTDEBIT");
             w.object();
-            w.key("usertrait").value("AUTOMATICPAYMENTDEBIT");
+            w.key("key").value("AUTOMATICPAYMENTDEBIT");
             w.key("label").value("Automatic payment debit");
             w.key("value").value("true");
             w.endObject();
 
-            w.object();        
-            w.key("usertrait").value("ONLINESTATEMENT");
+            w.key("ONLINESTATEMENT");        
+			w.object();
+            w.key("key").value("ONLINESTATEMENT");
             w.key("label").value("Online statement");
             w.key("value").value("false");
             w.endObject();
 
-            w.endArray();
         }
 
 	}
