@@ -1,1 +1,9 @@
 /target
+*.vlt
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.settings
