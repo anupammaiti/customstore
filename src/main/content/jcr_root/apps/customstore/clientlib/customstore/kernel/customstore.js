@@ -54,4 +54,12 @@ if (!CQ_Analytics.CustomStoreMgr ) {
 
     CQ_Analytics.CustomStoreMgr.initialized = false;
 
+    CQ_Analytics.CustomStoreMgr.getValue = function(service) {
+        if (CQ_Analytics.CustomStoreMgr.data) {
+            if (CQ_Analytics.CustomStoreMgr.data[service]) return  CQ_Analytics.CustomStoreMgr.data[service].value;
+        }
+        return "";
+    }
+
+
 }
