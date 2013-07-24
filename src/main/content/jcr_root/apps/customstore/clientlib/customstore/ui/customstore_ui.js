@@ -1,7 +1,6 @@
 if (CQ_Analytics.CustomStoreMgr ) {
 
-	var storeName = "customstore";
-	
+
     // HTML template
     CQ_Analytics.CustomStoreMgr.template = 
         "<input class='customstore-input' type='checkbox' id='customstore-input-%key%' name='%key%' value='%key%' %checked%>" +
@@ -26,6 +25,9 @@ if (CQ_Analytics.CustomStoreMgr ) {
 
     CQ_Analytics.CustomStoreMgr.renderer = function(store, divId) {
 
+        // first load data
+		// CQ_Analytics.CustomStoreMgr.loadData();
+
 		$CQ("#" + divId).children().remove();
 
 		var name = CQ_Analytics.ProfileDataMgr.getProperty("formattedName");
@@ -35,6 +37,7 @@ if (CQ_Analytics.CustomStoreMgr ) {
 		$CQ("#" + divId).addClass("cq-cc-customstore");
 		var div = $CQ("<div>").html(name + " services");
 		$CQ("#" + divId).append(div);           
+
 
 		var data = this.getJSON();
 
@@ -60,96 +63,6 @@ if (CQ_Analytics.CustomStoreMgr ) {
 
     }
 
-<<<<<<< .mine
-<<<<<<< .mine
-<<<<<<< .mine
-<<<<<<< .mine
-<<<<<<< .mine
-<<<<<<< .mine
-    //$CQ(".customstore-input").change(function(){
-    //    var value = false;
-    //    if ($CQ(this).attr("checked")) {
-    //        value = true;
-    //    }
-    //    var key = $CQ(this).attr("name");
-    //    $CQ("label[for='customstore-input-" + key + "']").toggleClass('checked');
-=======
-    CQ_Analytics.CustomStoreMgr.setTraitValue = function(trait, newValue) {
-
-        var traits = CQ_Analytics.CustomStoreMgr.data["traits"];
-        if (traits) {
-            for (var i in traits) {
-                if (typeof traits[i] === 'object') {
-                    if (traits[i]["usertrait"] === trait) traits[i]["value"] = newValue;
-                }
-            }
-        }
-    };
-
-    $CQ.ready(function(){
-
-		$CQ(".customstore-input").change(function(){
-        	var value = false;
-        	if ($CQ(this).attr("checked")) {
-            	value = true;
-        	}
-        	var key = $CQ(this).attr("name");
-        	$CQ("label[for='customstore-input-" + key + "']").toggleClass('checked');
-        	var newValue = (value === true)?"true":"false";
-			CQ_Analytics.CustomStoreMgr.setTraitValue(key,newValue);
-        	CQ_Analytics.ProfileDataMgr.fireEvent("update");
-    	});         
-
-
-    });
-
-
->>>>>>> .theirs
-=======
-    CQ_Analytics.CustomStoreMgr.setTraitValue = function(trait, newValue) {
-
-        var traits = CQ_Analytics.CustomStoreMgr.data["traits"];
-        if (traits) {
-            for (var i in traits) {
-                if (typeof traits[i] === 'object') {
-                    if (traits[i]["usertrait"] === trait) traits[i]["value"] = newValue;
-                }
-            }
->>>>>>> .theirs
-=======
-    CQ_Analytics.CustomStoreMgr.setTraitValue = function(trait, newValue) {
-
-        var traits = CQ_Analytics.CustomStoreMgr.data["traits"];
-        if (traits) {
-            for (var i in traits) {
-                if (typeof traits[i] === 'object') {
-                    if (traits[i]["usertrait"] === trait) traits[i]["value"] = newValue;
-                }
-            }
->>>>>>> .theirs
-=======
-    CQ_Analytics.CustomStoreMgr.setTraitValue = function(trait, newValue) {
-
-        var traits = CQ_Analytics.CustomStoreMgr.data["traits"];
-        if (traits) {
-            for (var i in traits) {
-                if (typeof traits[i] === 'object') {
-                    if (traits[i]["usertrait"] === trait) traits[i]["value"] = newValue;
-                }
-            }
->>>>>>> .theirs
-=======
-    CQ_Analytics.CustomStoreMgr.setTraitValue = function(trait, newValue) {
-
-        var traits = CQ_Analytics.CustomStoreMgr.data["traits"];
-        if (traits) {
-            for (var i in traits) {
-                if (typeof traits[i] === 'object') {
-                    if (traits[i]["usertrait"] === trait) traits[i]["value"] = newValue;
-                }
-            }
->>>>>>> .theirs
-=======
     CQ_Analytics.CustomStoreMgr.setTraitValue = function(trait, newValue) {
 
         var data = CQ_Analytics.CustomStoreMgr.data;
@@ -159,34 +72,10 @@ if (CQ_Analytics.CustomStoreMgr ) {
                     if (data[i].key === trait) data[i].value = newValue;
                 }
             }
->>>>>>> .theirs
         }
-<<<<<<< .mine
-    };
-
-    $CQ.ready(function(){
-
-		$CQ(".customstore-input").change(function(){
-        	var value = false;
-        	if ($CQ(this).attr("checked")) {
-            	value = true;
-        	}
-        	var key = $CQ(this).attr("name");
-        	$CQ("label[for='customstore-input-" + key + "']").toggleClass('checked');
-        	var newValue = (value === true)?"true":"false";
-			CQ_Analytics.CustomStoreMgr.setTraitValue(key,newValue);
-        	CQ_Analytics.ProfileDataMgr.fireEvent("update");
-    	});         
-
-
-    });
-
-
-=======
     };
 
     
 	CQ_Analytics.ClickstreamcloudMgr.register(CQ_Analytics.CustomStoreMgr);
->>>>>>> .theirs
 
 }
