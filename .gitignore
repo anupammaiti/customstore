@@ -8,3 +8,5 @@
 *.so
 *.settings
 *.project
+*.classpath
+*.buildpath
